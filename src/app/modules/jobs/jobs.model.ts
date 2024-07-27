@@ -7,7 +7,8 @@ const jobSchema = new Schema<IJob>({
   company: { type: String, required: true },
   location: { type: String, required: true },
   category: { type: String, required: true },
-  salary: { type: Number, required: true },
+  user_id: { type: String, required: true },
+  salary: { type: String, required: true },
 })
 
 export const Job = model<IJob>('Job', jobSchema)

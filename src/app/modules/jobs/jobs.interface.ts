@@ -4,5 +4,6 @@ export type IJob = {
   company: string
   location: string
   category: string
-  salary: number
+  user_id: string
+  salary: String
 }
