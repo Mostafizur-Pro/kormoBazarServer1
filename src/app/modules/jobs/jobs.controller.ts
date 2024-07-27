@@ -2,14 +2,15 @@ import { Request, RequestHandler, Response } from 'express'
 import httpStatus from 'http-status'
 import catchAsync from '../../../shared/catchAsync'
 import sendResponse from '../../../shared/sendResponse'
-import { IOrder } from './order.interface'
-import { OrderService } from './order.service'
+import { IJob } from './jobs.interface'
+import { JobService } from './jobs.service'
 
-const createOrder: RequestHandler = catchAsync(
+const createJob: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
-    const { ...order } = req.body
-
-    const result = await OrderService.createOrder(order)
+    const { ...job } = req.body
+    
+console.log('data', job)
+    const result = await JobService.createJob(job)
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
@@ -19,10 +20,10 @@ const createOrder: RequestHandler = catchAsync(
   }
 )
 
-const getAllOrder = catchAsync(async (req: Request, res: Response) => {
-  const result = await OrderService.getAllOrder()
+const getAllJobs = catchAsync(async (req: Request, res: Response) => {
+  const result = await JobService.getAllJobs()
 
-  sendResponse<IOrder[]>(res, {
+  sendResponse<IJob[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Order retrieved successfully !',
@@ -30,7 +31,7 @@ const getAllOrder = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-export const OrderController = {
-  createOrder,
-  getAllOrder,
+export const JobController = {
+  createJob,
+  getAllJobs,
 }
