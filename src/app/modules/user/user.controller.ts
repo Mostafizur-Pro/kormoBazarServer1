@@ -43,7 +43,26 @@ const getAllUsers = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
+const getUserByEmail = catchAsync(async (req: Request, res: Response) => {
+  const { email } = req.params
+  const result = await UsersService.getUserByEmail(email)
+  
+  if (!result) {
+    return sendResponse<IUser>(res, {
+      statusCode: httpStatus.NOT_FOUND,
+      success: false,
+      message: 'User not found',
+      data: null,
+    })
+  }
 
+  sendResponse<IUser>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User retrieved successfully!',
+    data: result,
+  })
+})
 const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id
 
@@ -90,4 +109,5 @@ export const UserController = {
   getSingleUser,
   updateUser,
   deleteUser,
+  getUserByEmail,
 }

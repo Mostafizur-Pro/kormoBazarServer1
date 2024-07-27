@@ -21,6 +21,11 @@ const getAllUsers = async (): Promise<IUser[]> => {
   const result = await User.find()
   return result
 }
+const getUserByEmail = async (email: string): Promise<IUser | null> => {
+  const result = await User.findOne({ email })
+  return result
+}
+
 const getSingleUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findById(id)
   return result
@@ -46,4 +51,5 @@ export const UsersService = {
   getSingleUser,
   updateUser,
   deleteUser,
+  getUserByEmail,
 }

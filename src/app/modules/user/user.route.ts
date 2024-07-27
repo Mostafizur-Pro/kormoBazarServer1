@@ -18,6 +18,7 @@ router.patch(
   UserController.updateUser
 )
 router.get('/', UserController.getAllUsers)
+router.get('/email/:email', UserController.getUserByEmail)
 router.get('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.getSingleUser)
 router.delete('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.deleteUser)
 
