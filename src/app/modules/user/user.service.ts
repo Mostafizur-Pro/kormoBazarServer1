@@ -8,7 +8,7 @@ const createUser = async (user: IUser): Promise<IUser | null> => {
     user.password = config.default_user_password as string
   }
 
-  console.log('data', user)
+  // console.log('data', user)
   const createUser = await User.create(user)
   if (!createUser) {
     throw new ApiError(400, 'Failed to create User')

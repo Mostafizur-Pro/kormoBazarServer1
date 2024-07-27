@@ -1,7 +1,7 @@
 This is Cow hut management backend Website :
 The details about this website given into the bellow:
 
-Live Link : https://digital-cow-server.vercel.app/
+Live Link : https://kormo-bazar-server1.vercel.app/
 
 api's Link :
 

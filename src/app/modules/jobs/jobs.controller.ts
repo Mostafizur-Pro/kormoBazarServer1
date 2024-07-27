@@ -14,7 +14,7 @@ const createJob: RequestHandler = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Order Placed successfully',
+      message: 'Job Placed successfully',
       data: result,
     })
   }
@@ -26,7 +26,7 @@ const getAllJobs = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IJob[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Order retrieved successfully !',
+    message: 'Job retrieved successfully !',
     data: result,
   })
 })
@@ -38,7 +38,21 @@ const deleteJob = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IJob>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Cow deleted successfully !',
+    message: 'Job deleted successfully !',
+    data: result,
+  })
+})
+const updateJob = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id
+  const updatedData = req.body
+
+  console.log('data', id, updatedData)
+  const result = await JobService.updateJob(id, updatedData)
+
+  sendResponse<IJob>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Job updated successfully !',
     data: result,
   })
 })
@@ -46,4 +60,5 @@ export const JobController = {
   createJob,
   getAllJobs,
   deleteJob,
+  updateJob,
 }

@@ -60,19 +60,28 @@ const refreshToken: RequestHandler = catchAsync(
     })
   }
 )
-const getUserProfile = async (req: Request, res: Response, next: NextFunction) => {
+
+interface AuthenticatedRequest extends Request {
+  user: any
+}
+
+const getUserProfile = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
-    console.log('emial', req.user)
-    const user = await AuthService.getUserInfo(req.user.email);
+    const email = req.user.email
+    const user = await AuthService.getUserInfo(email)
     res.status(httpStatus.OK).json({
       success: true,
       message: 'User information retrieved successfully',
       data: user,
-    });
-  } catch (err) {
-    next(new ApiError(httpStatus.NOT_FOUND, err.message));
+    })
+  } catch (err: any) {
+    next(new ApiError(httpStatus.NOT_FOUND, err.message))
   }
-};
+}
 
 export const AuthController = {
   LoginUser,

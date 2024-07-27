@@ -23,9 +23,19 @@ const deleteJob = async (id: string): Promise<IJob | null> => {
   const result = await Job.findByIdAndDelete(id)
   return result
 }
+const updateJob = async (
+  id: string,
+  payload: Partial<IJob>
+): Promise<IJob | null> => {
+  const result = await Job.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  })
+  return result
+}
 
 export const JobService = {
   createJob,
   getAllJobs,
   deleteJob,
+  updateJob,
 }

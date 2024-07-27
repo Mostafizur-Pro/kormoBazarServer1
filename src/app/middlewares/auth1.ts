@@ -1,12 +1,12 @@
 import config from '../../config'
-
-// middleware/authMiddleware.js
 import jwt from 'jsonwebtoken'
 import { User } from '../modules/user/user.model'
 import { NextFunction, Request, Response } from 'express'
 
-// const User = require('../models/user'); // Adjust the path as needed
 
+interface DecodedToken {
+  email: string;
+}
 const authenticateToken = async (
   req: Request,
   res: Response,
@@ -20,7 +20,7 @@ const authenticateToken = async (
   }
 
   try {
-    const decoded = jwt.verify(token, config.jwt_secret)
+    const decoded = jwt.verify(token, "secret") as DecodedToken;
     const user = await User.findOne({ email: decoded.email })
 
     if (!user) {
