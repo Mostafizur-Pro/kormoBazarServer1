@@ -14,13 +14,12 @@ router.post(
 router.patch(
   '/:id',
   validateRequest(UserValidation.updateUserZodSchema),
-  auth(ENUM_USER_ROLE.ADMIN),
   UserController.updateUser
 )
 router.get('/', UserController.getAllUsers)
 router.get('/email/:email', UserController.getUserByEmail)
-router.get('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.getSingleUser)
-router.delete('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.deleteUser)
+router.get('/:id', UserController.getSingleUser)
+router.delete('/:id', UserController.deleteUser)
 
 export default router
 

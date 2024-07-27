@@ -1,119 +1,116 @@
-This is Cow hut management backend Website :
-The details about this website given into the bellow:
+# Kormo Bazaar
 
-Live Link : https://kormo-bazar-server1.vercel.app/
+Welcome to Kormo Bazaar! This is a job portal application where users can view, edit, and delete job posts.
 
-api's Link :
+## Live Demo Client
 
-create a new admin :
-{
-"password":"amiadminbujheshunekothakoiyo",
-"role": "admin",
-"name":{
-"firstName": "Mr. Admin"
-"lastName": "Bhai"
-},
-"phoneNumber":"01711111111",
-"address": "Uganda",
-}
+You can view the live client application here: [Kormo Bazaar Live](https://kormo-bazaar.vercel.app/)
 
-response data look like this :
-{
-"success": true,
-"statusCode":200,
-"message": "Admin created successfully",
-"data": {
-"\_id":"ObjectId(“6473c6a50c56d0d40b9bb6a3)",  
- "role": "admin",
-"name":{
-"firstName": "Mr. Admin"
-"lastName": "Bhai"
-},
-"phoneNumber":"01711111111",
-"address": "Uganda",
-}
-}
+## Live Demo Server
 
-Route: https://digital-cow-server.vercel.app/api/v1/admins/create-admin (POST)
+The server for this application can be found here: [Kormo Bazaar Server](https://kormo-bazar-server1.vercel.app/)
 
-\*\*\* Here is a more detailed explanation of each step:
-The admins enter their phone number and password into the login form.
-The server validates the phone number and password.
-If the login is successful, the server generates an access token and a refresh token.
-The access token is sent in the response to the user.
-The refresh token is set in the browser cookie.
-The admin's \_id and role are included in both the access token and the refresh token.
-The access token is used to authenticate the user for subsequent requests.
-The refresh token can be used to generate a new access token if the old one expires.
-The \_id and role are used to identify the admin and their permissions.
+## Git Repository Client
 
-Login as a admin :
-req.body
-{
-"phoneNumber":"012546465613445",
-"password":"Rafin019844@"
-}
+You can view the client-side code here: [Kormo Bazaar Client Repository](https://github.com/Mostafizur-Pro/kormoBazar/)
 
-Response Sample Pattern:
+## Git Repository Server
 
-{
-"success": true,
-"statusCode":200,
-"message": "User logged in successfully",
-"data": {
-"accessToken": "eyJhbGciOiJIUzI1NiICJ9.eyJ1c2V4NzIzMTcxNCwiZXhwIjoxNjg3MzE4MTE0fQ.Q7j8vtY9r1JeDK_zR6bYInlY",
-}
-}
+You can view the server-side code here: [Kormo Bazaar Server Repository](https://github.com/Mostafizur-Pro/kormoBazarServer1/)
 
-Route:https://digital-cow-server.vercel.app/api/v1/admins/login (POST)
+## Features
 
-Login User
-To log in, users must provide their phone number and password. The phone number must be unique in the database. If the login is successful, an access token will be sent in the response and a refresh token will be set in the browser cookie. The user's \_id and role will both be included in the tokens.
+- **View Job Posts**: Browse through a list of available job posts.
+- **Filter Jobs**: Filter job posts by category.
+- **Edit Jobs**: Edit job details if you are the owner of the job post.
+- **Delete Jobs**: Delete job posts if you are the owner of the job post.
 
-Here is a more detailed explanation of each step:
-The user enters their phone number and password into the login form.
-The server validates the phone number and password.
-If the login is successful, the server generates an access token and a refresh token.
-The access token is sent in the response to the user.
-The refresh token is set in the browser cookie.
-The user's \_id and role are included in both the access token and the refresh token.
-The access token is used to authenticate the user for subsequent requests.
-The refresh token can be used to generate a new access token if the old one expires.
-The \_id and role are used to identify the user and their permissions.
-Route: /api/v1/auth/login (POST) Request body:
+## Setup Instructions
 
-{
-"phoneNumber":"0123564813464616",
-"password":"Rafin019844@",
-}
-Response: The created access token for the user.
+### Frontend
 
-Response Sample Pattern:
+1. **Clone the repository:**
 
-{
-"success": true,
-"statusCode":200,
-"message": "User logged in successfully",
-"data": {
-"accessToken": "eyJhbGciOiJIUzI1NiICJ9.eyJ1c2V4NzIzMTcxNCwiZXhwIjoxNjg3MzE4MTE0fQ.Q7j8vtY9r1JeDK_zR6bYInlY",
-}
-}
+   ```bash
+   git clone https://github.com/Mostafizur-Pro/kormoBazar.git
+   ```
 
-https://digital-cow-server.vercel.app/api/v1/users (GET) → Can only be accessed by admin
-https://digital-cow-server.vercel.app/api/v1/users/:id (Single GET) → Can only be accessed by admin
-https://digital-cow-server.vercel.app/api/v1/users/:id (PATCH) → Can only be accessed by admin
-https://digital-cow-server.vercel.app/api/v1/users/:id (DELETE) → Can only be accessed by admin
-Cows
-https://digital-cow-server.vercel.app/api/v1/cows (POST) → Can only be accessed by seller
+2. **Navigate to the frontend directory:**
 
-https://digital-cow-server.vercel.app/api/v1/cows (GET) → Can only be accessed by buyer,seller & admin
+   ```bash
+   cd kormoBazar
+   ```
 
-https://digital-cow-server.vercel.app/api/v1/cows/:id (Single GET) → Can only be accessed by buyer,seller & admin
+3. **Install dependencies:**
 
-https://digital-cow-server.vercel.app/api/v1/cows/:id (PATCH) → Can only be accessed by the seller of the cow
+   ```bash
+   npm install
+   ```
 
-https://digital-cow-server.vercel.app/api/v1/cows/:id (DELETE) → Can only be accessed by the seller of the cow
+4. **Start the development server:**
 
-https://digital-cow-server.vercel.app/api/v1/orders (POST) → Can only be accessed by the buyer
+   ```bash
+   npm run start
+   ```
 
-https://digital-cow-server.vercel.app/api/v1/orders (GET)
+### Backend
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/Mostafizur-Pro/kormoBazarServer1.git
+   ```
+
+2. **Navigate to the backend directory:**
+
+   ```bash
+   cd kormoBazarServer1
+   ```
+
+3. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+4. **Start the server:**
+
+   ```bash
+   npm run dev
+   ```
+
+## API Endpoints
+
+1. **Job Post API:**
+
+   - **GET /api/v1/jobs**: Retrieve all job posts.
+   - **GET /api/v1/jobs?category={category}**: Retrieve job posts filtered by category.
+   - **PUT /api/v1/jobs/update/:id**: Update a specific job post.
+   - **DELETE /api/v1/jobs/delete/:id**: Delete a specific job post.
+
+2. **User API:**
+
+   - **POST /api/v1/users/signup**: Register a new user.
+   - **GET /api/v1/users/email/:email**: Retrieve user information by email.
+
+3. **Auth API:**
+   - **POST /api/v1/auth/login**: Login user.
+   - **GET /api/v1/auth/userinfo**: Find user by token.
+
+## Contributing
+
+1. **Fork the repository**.
+2. **Create a new branch** for your feature or bug fix.
+3. **Commit your changes**.
+4. **Push your branch** to GitHub.
+5. **Open a pull request**.
+
+## Contact
+
+If you have any questions, feel free to reach out at [mostafizur0195@gmail.com](mailto:mostafizur0195@gmail.com) or call me at [01950165017](tel:01950165017).
+
+You can also connect with me on:
+
+- **WhatsApp:** [Click to chat](https://wa.me/01950165017)
+- **Facebook:** [Mostafizur Rahman](https://www.facebook.com/mostafizur.proo/)
+- **LinkedIn:** [Mostafizur Rahman](https://www.linkedin.com/in/mostafizur-pro/)
