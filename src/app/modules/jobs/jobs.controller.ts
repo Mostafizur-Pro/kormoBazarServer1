@@ -8,8 +8,8 @@ import { JobService } from './jobs.service'
 const createJob: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { ...job } = req.body
-    
-console.log('data', job)
+
+    console.log('data', job)
     const result = await JobService.createJob(job)
     sendResponse(res, {
       statusCode: httpStatus.OK,
@@ -30,8 +30,20 @@ const getAllJobs = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
+const deleteJob = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id
 
+  const result = await JobService.deleteJob(id)
+
+  sendResponse<IJob>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Cow deleted successfully !',
+    data: result,
+  })
+})
 export const JobController = {
   createJob,
   getAllJobs,
+  deleteJob,
 }

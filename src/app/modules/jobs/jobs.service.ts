@@ -19,7 +19,13 @@ const createJob = async (job: IJob): Promise<IJob | null> => {
   return createUser
 }
 
+const deleteJob = async (id: string): Promise<IJob | null> => {
+  const result = await Job.findByIdAndDelete(id)
+  return result
+}
+
 export const JobService = {
   createJob,
   getAllJobs,
+  deleteJob,
 }
